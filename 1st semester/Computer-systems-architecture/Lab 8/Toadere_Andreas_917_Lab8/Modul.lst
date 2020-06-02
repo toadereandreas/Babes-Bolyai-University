@@ -1,0 +1,23 @@
+     1                                  bits 32
+     2                                  global VerifyChar
+     3                                  
+     4                                  segment code use32 class = code
+     5                                  VerifyChar:
+     6 00000000 8B442404                    mov eax,[esp+4]
+     7                                      
+     8 00000004 3C0A                                cmp al,0Ah
+     9 00000006 7411                                je Set0
+    10                                              
+    11 00000008 3C61                                cmp al,  97 ;30h
+    12 0000000A 7216                                jb Set1
+    13 0000000C 3C7A                                cmp al, 122 ;39h
+    14 0000000E 7712                                ja Set1
+    15                                              
+    16 00000010 C744240402000000                    mov [esp+4],dword(2)
+    17 00000018 C3                                  ret
+    18                                              Set0:
+    19 00000019 C744240400000000                    mov [esp+4],dword(0)
+    20 00000021 C3                                  ret
+    21                                              Set1:
+    22 00000022 C744240401000000                    mov [esp+4],dword(1)
+    23 0000002A C3                                  ret

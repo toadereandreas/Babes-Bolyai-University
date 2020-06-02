@@ -1,0 +1,77 @@
+     1                                  ; Read a sentence from the keyboard containing different characters (lowercase letters, big letters, numbers, special ones, etc). 
+     2                                  ; Obtain a new string with only the small case letters and another string with only the big case letters. Print both strings on the screen. 
+     3                                  bits 32
+     4                                  global start
+     5                                  
+     6                                  extern exit,scanf,printf
+     7                                  
+     8                                  %include "modul.asm"
+     1                              <1> bits 32
+     2                              <1> global VerifyChar
+     3                              <1> 
+     4                              <1> segment code use32 class = code
+     5                              <1> VerifyChar:
+     6 00000000 8B442404            <1>     mov eax,[esp+4]
+     7                              <1>     
+     8 00000004 3C0A                <1>             cmp al,0Ah
+     9 00000006 7411                <1>             je Set0
+    10                              <1>             
+    11 00000008 3C61                <1>             cmp al,  97 ;30h
+    12 0000000A 7216                <1>             jb Set1
+    13 0000000C 3C7A                <1>             cmp al, 122 ;39h
+    14 0000000E 7712                <1>             ja Set1
+    15                              <1>             
+    16 00000010 C744240402000000    <1>             mov [esp+4],dword(2)
+    17 00000018 C3                  <1>             ret
+    18                              <1>             Set0:
+    19 00000019 C744240400000000    <1>             mov [esp+4],dword(0)
+    20 00000021 C3                  <1>             ret
+    21                              <1>             Set1:
+    22 00000022 C744240401000000    <1>             mov [esp+4],dword(1)
+    23 0000002A C3                  <1>             ret
+     9                                  
+    10                                  import exit msvcrt.dll
+    11                                  import scanf msvcrt.dll
+    12                                  import printf msvcrt.dll
+    13                                  
+    14                                  segment data use32 class=data
+    15 00000000 2563000000000000            formatC dd "%c",0
+    16 00000008 2573000000000000            formatS dd "%s",0
+    17 00000010 00000000                    caracter dd 0
+    18 00000014 00000000                    numere dd 0
+    19                                      
+    20                                  segment code use32 class=code
+    21                                  start:
+    22 0000002B BF[14000000]                mov edi, numere
+    23                                      CitesteCaracter:
+    24                                          ; Citesc caracter
+    25 00000030 68[10000000]                    push dword caracter
+    26 00000035 68[00000000]                    push dword formatC
+    27 0000003A FF15[00000000]                  call [scanf]
+    28 00000040 83C408                          add esp, 4 * 2
+    29                                          
+    30                                          ; Verific daca e cifra
+    31 00000043 A1[10000000]                    mov eax,[caracter]
+    32 00000048 50                              push eax
+    33 00000049 E8B2FFFFFF                      call VerifyChar
+    34                                          
+    35 0000004E 8B0424                          mov eax,[esp]
+    36 00000051 83C404                          add esp, 4 * 1
+    37 00000054 83F800                          cmp eax,0
+    38 00000057 740D                            je Sfarsit
+    39 00000059 83F801                          cmp eax,1
+    40 0000005C 74D2                            je CitesteCaracter
+    41 0000005E BE[10000000]                      mov esi,caracter
+    42 00000063 A4                                movsb
+    43                                            
+    44 00000064 EBCA                            jmp CitesteCaracter
+    45                                      
+    46                                      Sfarsit:
+    47                                      
+    48 00000066 68[14000000]                push dword numere
+    49 0000006B 68[08000000]                push dword formatS
+    50 00000070 FF15[00000000]              call [printf]
+    51 00000076 83C408                      add esp, 4 * 2
+    52                                      
+    53 00000079 6A00                        push dword 0
+    54 0000007B FF15[00000000]              call [exit]

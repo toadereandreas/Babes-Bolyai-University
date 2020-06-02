@@ -1,0 +1,51 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 05                          a DB 5
+    14 00000001 04                          b DB 4
+    15 00000002 01                          c DB 1
+    16 00000003 1400                        d DW 20
+    17                                      ; ...
+    18                                  
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; We calculate ( 10 * a - 5 * b ) + ( d - 5 * c )
+    23 00000000 B800000000                      mov EAX, 0   ; We make sure that EAX does not have random value : EAX = 0
+    24 00000005 A0[00000000]                    mov AL, [a]  ; AL = a = 5
+    25 0000000A B10A                            mov CL, 10   ; We use CL as an auxiliary register to multiply with AL : CL = 10  ????????  
+    26 0000000C F6E1                            mul CL       ; AL = AL * CL = 5 * 10 = 50
+    27                                          
+    28                                          ; We store the result in CL then empty AL to calculate 5 * b
+    29 0000000E 88C1                            mov CL, AL   ; CL = AL = 50
+    30 00000010 B000                            mov AL, 0    ; AL = 0
+    31 00000012 A0[01000000]                    mov AL, [b]  ; AL = b = 4
+    32 00000017 B205                            mov DL, 5    ; We use DL as an auxiliary register to multiply with Al : DL = 5
+    33 00000019 F6E2                            mul DL       ; AL = AL * DL = 4 * 5 = 20
+    34                                          
+    35                                          ; Then we calculate ( 10 * a - 5 * b ) in CL
+    36 0000001B 28C1                            sub CL, AL   ; CL = CL - AL = 50 - 20 = 30
+    37                                          
+    38                                          ; We calculate 5 * c
+    39 0000001D B000                            mov AL, 0    ; AL = 0
+    40 0000001F A0[02000000]                    mov AL, [c]  ; AL = c = 1
+    41 00000024 F6E2                            mul DL       ; Already DL = 5 => AL = AL * DL = 1 * 5 = 5
+    42 00000026 66BA0000                        mov DX, 0    ; We do not need DL to multiply by 5 so we give it the value 0 : DX = 0
+    43 0000002A 668B15[03000000]                mov DX, [d]  ; Then store d in it : DX = d = 20
+    44 00000031 6629C2                          sub DX, AX   ; DX = DX - AX = 20 - 5 = 15
+    45                                          
+    46                                          ; Now we have CX = CL = ( 10 * a - 5 * b ) = 30
+    47                                          ; and  DX = ( d - 5 * c ) = 15 so we add them in CX
+    48 00000034 6601D1                          add CX, DX   ; CX = CX + DC = 30 + 15 = 45
+    49                                          ; exit(0)
+    50 00000037 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    51 00000039 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

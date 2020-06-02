@@ -1,0 +1,72 @@
+     1                                  ; Se dau doua siruri de octeti S1 si S2 de aceeasi lungime. Sa se construiasca sirul D astfel: fiecare element de pe pozitiile pare din D 
+     2                                  ; este suma elementelor de pe pozitiile corespunzatoare din S1 si S2, iar fiecare element de pe pozitiile impare are ca si valoare diferenta 
+     3                                  ; elementelor de pe pozitiile corespunzatoare din S1 si S2. 
+     4                                  ;
+     5                                  ; Exemplu :
+     6                                  ; S1: 1,  2,  3,  4
+     7                                  ; S2: 5,  6,  7,  8
+     8                                  ; D : 6, -4, 10, -4
+     9                                  
+    10                                  bits 32 
+    11                                  global start        
+    12                                  
+    13                                  extern exit               
+    14                                  import exit msvcrt.dll    
+    15                                  
+    16                                  segment data use32 class=data
+    17 00000000 01020304                    s1 db 1, 2, 3, 4
+    18                                      l  equ $-s1
+    19 00000004 05060708                    s2 db 5, 6, 7, 8
+    20 00000008 00<rept>                    d  times l db 0
+    21                                  
+    22                                  
+    23                                  segment code use32 class=code
+    24                                      start:
+    25 00000000 31C9                            xor ecx, ecx
+    26                                      
+    27 00000002 66B80000                        mov ax, 0                ; Initializam AX cu 0 ( pt. impartirea ulterioara )
+    28 00000006 B004                            mov al, l                ; Mutam lungimea sirurilor in AL
+    29 00000008 B302                            mov bl, 2                ; Dorim sa impartim cu 2 lungimea pt. a obtine nr. incrementarilor necesare pt. fiecare bucla
+    30 0000000A F6F3                            div bl                   ; Impartim pe AX cu 2 => astfel obtinem in AL jumatatea lungimii sirurilor
+    31 0000000C 88C2                            mov dl, al               ; Stocam jumatatea lungimii sirurilor in DL
+    32                                             
+    33                                          ; Preconditii bucla pozitii pare
+    34 0000000E 88D1                            mov cl,  dl              ; Punem jumatatea lungimii sirurilor in ECX pentru a putea realiza prima bucla loop ( pt. pozitiile pare )
+    35 00000010 BE00000000                      mov esi,  0              ; Vom folosi ESI pe post de indice ( in prima bucla ESI va fi 0, 2, 4, ... )
+    36 00000015 E318                            jecxz InvalidPar         ; Daca lui ECX nu i-a fost atribuita o valoare, evitam bucla
+    37                                          
+    38                                          RepetaPar:               ; Repeta bucla pt. pozitii pare de l/2 ori
+    39 00000017 8A86[00000000]                          mov al, [s1+esi] ; AL = s1[esi]
+    40 0000001D 8A9E[04000000]                          mov bl, [s2+esi] ; BL = s2[esi]
+    41 00000023 00D8                                    add al, bl       ; AL = AL + BL 
+    42 00000025 8886[08000000]                          mov [d+esi], al  ; d[esi] = AL = s1[esi] + s2[esi]
+    43 0000002B 46                                      inc esi     
+    44 0000002C 46                                      inc esi          ; ESI = ESI + 2 ( pt. a lucra doar cu indicii pari ai sirurilor )
+    45 0000002D E2E8                            loop RepetaPar           ; Sfarsit bucla pt. pozitii pare
+    46                                          
+    47                                          InvalidPar               ; ECX a fost invalid
+    47          ******************       warning: label alone on a line without a colon might be in error [-w+orphan-labels]
+    48                                          
+    49                                          ; In acest punct vom avea sirul d = [  s1[0]+s2[0], 0, s1[2]+s2[2], 0, ...  ]
+    50                                          
+    51                                          ; Preconditii bucla pozitii impare
+    52 0000002F 88D1                            mov cl , dl              ; Punem jumatatea lungimii sirurilor in ECX pentru a putea realiza a2a bucla loop ( pt. pozitiile impare )
+    53 00000031 BE01000000                      mov esi,  1              ; Vom folosi ESI pe post de indice ( in cea de a doua bucla ESI va fi 1, 3, ... )
+    54 00000036 E318                            jecxz InvalidImpar       ; Daca lui ECX nu i-a fost atribuita o valoare, evitam bucla
+    55                                       
+    56                                          RepetaImpar:             ; Repeta bucla pt. pozitii pare de l/2 ori
+    57 00000038 8A86[00000000]                          mov al, [s1+esi] ; AL = s1[esi]
+    58 0000003E 8A9E[04000000]                          mov bl, [s2+esi] ; BL = s2[esi]
+    59 00000044 28D8                                    sub al, bl       ; AL = AL - BL 
+    60 00000046 8886[08000000]                          mov [d+esi], al  ; d[esi] = AL = s1[esi] - s2[esi]
+    61 0000004C 46                                      inc esi
+    62 0000004D 46                                      inc esi          ; ESI = ESI + 2 ( pt. a lucra doar cu indicii impari ai sirurilor )
+    63 0000004E E2E8                            loop RepetaImpar         ; Sfarsit bucla pt. pozitii impare
+    64                                          
+    65                                          InvalidImpar             ; ECX a fost invalid
+    65          ******************       warning: label alone on a line without a colon might be in error [-w+orphan-labels]
+    66                                          
+    67                                          ; In acest punct vom avea sirul d = [  s1[0]+s2[0], s1[1]+s2[1], s1[2]+s2[2], s1[3]+s2[3], ...  ]
+    68                                          
+    69 00000050 6A00                            push    dword 0     
+    70 00000052 FF15[00000000]                  call    [exit]      

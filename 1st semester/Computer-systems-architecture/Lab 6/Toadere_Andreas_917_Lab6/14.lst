@@ -1,0 +1,52 @@
+     1                                  ; Se da un sir S de dublucuvinte. 
+     2                                  ; Sa se obtina sirul D format din octetii dublucuvintelor din sirul D sortati in ordine crescatoare in interpretarea fara semn.
+     3                                  ; Exemplu :
+     4                                  ;   s DD 12345607h, 1A2B3C15h,
+     5                                  ;   d DB 07h, 12h, 15h, 1Ah, 2Bh, 34h, 3Ch, 56h
+     6                                  
+     7                                  bits 32 
+     8                                  global start        
+     9                                  extern exit               
+    10                                  import exit msvcrt.dll    
+    11                                  
+    12                                  segment data use32 class = data
+    13 00000000 07563412153C2B1AFF-         s  dd    12345607h, 1A2B3C15h, 000000FFh  ; Sirul initial de dublucuvinte
+    13 00000009 000000             
+    14                                      ls equ   ($-s)                 ; Lungimea sirului s in octeti
+    15 0000000C 00<rept>                    d  times ls*8 db 0             ; d va fi sirul solutie
+    16 0000006C 00                          ld db 0
+    17                                      
+    18                                  segment code use32 class = code
+    19                                      start:
+    20 00000000 BE[00000000]                    mov esi, s    ; setam sirul sursa ca fiind s
+    21 00000005 FC                              cld           ; vom parcurge sirul s de la stanga la dreapta
+    22 00000006 B90C000000                      mov ecx, ls   ; vom parcurge elementele sirului s
+    23 0000000B E334                            jecxz invalid
+    24                                          
+    25                                          repeta :
+    26                                          
+    27 0000000D B800000000                          mov eax, 0
+    28 00000012 AC                                  lodsb             ; luam un octet
+    29 00000013 51                                  push ecx          ; tinem minte valoarea contorului in stiva
+    30 00000014 8B0D[6C000000]                      mov ecx, [ld]     ; punem in cl lungimea curenta a sirului destinatie
+    31                                              
+    32 0000001A E316                                jecxz neglijeaza  ; daca e primul element din s, nu il mai comparam
+    33                                              
+    34                                              dest_el_loop:           ; bucla parcurge sirul d de la dreapta la stanga
+    35 0000001C 3881[0B000000]                          cmp [d+ecx-1], al   ; comparam octetul curent din s cu octetii din d, incepand de la cel mai din dreapta
+    36 00000022 720E                                    jb neglijeaza       ; daca octetul curent din s este mai mare atunci il vom pune la final => nu e necesara mutarea altor elementele
+    37 00000024 8A99[0B000000]                          mov bl,[d+(ecx-1)]  ; "dublam" octetul curent din d pentru a face loc pt. octetulcurent din s 
+    38 0000002A 8899[0C000000]                          mov [d+ecx], bl
+    39 00000030 E2EA                                loop dest_el_loop       ; vom iesi din bucla atunci cand vom gasi pozitia corecta a octetului curent din s si anume d+ecx
+    40                                              
+    41                                              neglijeaza:
+    42                                              
+    43 00000032 8881[0C000000]                      mov [d+ecx], al         ; asezam octetul curent din s in pozitia corecta
+    44 00000038 FE05[6C000000]                      inc byte [ld]           ; incrementam lungimea sirului d
+    45 0000003E 59                                  pop ecx                 ; repetam procesul de cate ori e necesar ( numarul de octeti )
+    46                                              
+    47 0000003F E2CC                            loop repeta
+    48                                          
+    49                                          invalid:
+    50 00000041 6A00                            push    dword 0     
+    51 00000043 FF15[00000000]                  call    [exit]     

@@ -1,0 +1,46 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 09                          a DB 9
+    14 00000001 03                          b DB 3
+    15 00000002 01                          c DB 1
+    16 00000003 06                          d DB 6
+    17                                      ; ...
+    18                                  
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ( a - b - b - c ) + ( a - c - c - d )
+    23                                          
+    24                                          ; We calculate ( a - b - b - c ) in AX. The result will be stored in AX
+    25                                          ; e.g. a = 9, b = 3, c = 1, d = 2 => ( a - b - b - c ) = ( 9 - 3 - 3 - 1 ) = 2
+    26 00000000 B800000000                      mov EAX, 0   ; We make sure that EAX is 0
+    27 00000005 66A1[00000000]                  mov AX, [a]  ; AX = a = 9
+    28 0000000B 662B05[01000000]                sub AX, [b]  ; AX = AX - b = 9 - 3 = 6
+    29 00000012 662B05[01000000]                sub AX, [b]  ; AX = AX - b = 6 - 3 = 3
+    30 00000019 662B05[02000000]                sub AX, [c]  ; AX = AX - c = 3 - 1 = 2
+    31                                          
+    32                                          ; We calculate ( a - c - c - d ) in BX
+    33                                          ; e.g. a = 9, b = 3, c = 1, d = 2 => ( a - c - c - d ) = ( 9 - 1 - 1 - 6 ) = 1
+    34 00000020 BB00000000                      mov EBX, 0   ; We make sure that EBX is 0
+    35 00000025 668B1D[00000000]                mov BX, [a]  ; BX = a = 9
+    36 0000002C 662B1D[02000000]                sub BX, [c]  ; BX = BX - c = 9 - 1 = 8
+    37 00000033 662B1D[02000000]                sub BX, [c]  ; BX = BX - c = 8 - 1 = 7
+    38 0000003A 662B1D[03000000]                sub BX, [d]  ; BX = BX - d = 7 - 6 = 1
+    39                                          
+    40                                          ; Now we calculate ( a - b - b - c ) + ( a - c - c - d )
+    41                                          ; e. g. => ( a - b - b - c ) + ( a - c - c - d ) = 2 + 1 = 3
+    42 00000041 6601D8                          add AX, BX   ; AX = AX + BX = 2 + 1 = 3
+    43                                          
+    44                                          ; exit(0)
+    45 00000044 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    46 00000046 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

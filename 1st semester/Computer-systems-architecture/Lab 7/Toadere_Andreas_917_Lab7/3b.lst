@@ -1,0 +1,84 @@
+     1                                  ; Se da un fisier text. Sa se citeasca continutul fisierului, sa se contorizeze numarul de cifre pare si sa se afiseze aceasta valoare. 
+     2                                  ; Numele fisierului text este definit in segmentul de date.
+     3                                  bits 32
+     4                                  global start        
+     5                                  
+     6                                  extern exit, fread, fopen, fclose, printf   
+     7                                  import printf msvcrt.dll  
+     8                                  import exit   msvcrt.dll
+     9                                  import fread  msvcrt.dll
+    10                                  import fopen  msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 696E7075745F66696C-         nume_fisier db    "input_file.txt", 0
+    14 00000009 652E74787400       
+    15 0000000F 7200                        mod_acces   db    "r"             , 0
+    16 00000011 FFFFFFFF                    descriptor  dd      -1
+    17                                      lungime_max equ   1000
+    18 00000015 496E20666973696572-         format_rez  db    "In fisier sunt %d cifre pare.", 0
+    18 0000001E 2073756E7420256420-
+    18 00000027 636966726520706172-
+    18 00000030 652E00             
+    19 00000033 25632C00                    format_nr   db    "%c,", 0
+    20 00000037 00000000                    nr_cif_pare dd       0
+    21 0000003B 00<rept>                    sir_fisier  times lungime_max db 0
+    22 00000423 FF                          aux         db      -1
+    23                                      
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; Deschid fisierul
+    27 00000000 68[0F000000]                    push dword mod_acces     
+    28 00000005 68[00000000]                    push dword nume_fisier
+    29 0000000A FF15[00000000]                  call [fopen]
+    30 00000010 83C408                          add esp, 4 * 2
+    31                                          
+    32                                          ; Verific daca s-a deschis in mod corect
+    33 00000013 83F800                          cmp eax, 0
+    34 00000016 746F                            je invalid
+    35 00000018 A3[11000000]                    mov [descriptor], eax
+    36                                          
+    37                                          ; Citesc fisierul byte cu byte si stochez in sir_fisier
+    38 0000001D FF35[11000000]                  push dword [descriptor]
+    39 00000023 68E8030000                      push dword lungime_max
+    40 00000028 6A01                            push dword 1
+    41 0000002A 68[3B000000]                    push dword sir_fisier
+    42 0000002F FF15[00000000]                  call [fread]
+    43 00000035 83C410                          add esp, 4 * 4
+    44                                       
+    45                                          ; Inchid fisierul
+    46 00000038 FF35[11000000]                  push dword [descriptor]
+    47 0000003E FF15[00000000]                  call [fclose]
+    48 00000044 83C404                          add esp, 4 * 1
+    49                                          
+    50                                          ; Parcurg sirul de la dreapta spre stanga
+    51 00000047 BE[3B000000]                    mov esi, sir_fisier
+    52 0000004C B902000000                      mov ecx, 2
+    53 00000051 FC                              cld
+    54                                          
+    55                                          ; exemplu : input_file.txt = "2468135788776655"
+    56                                          repeta:
+    57 00000052 51                                  push ecx         ; salvez valoarea lui ecx
+    58 00000053 31C0                                xor eax, eax
+    59 00000055 AC                                  lodsb            ; incarc byte
+    60 00000056 3C00                                cmp al, 0        ; compar byte-ul cu 0
+    61 00000058 7B16                                jpo e_impar      ; daca este impar sar
+    62 0000005A 8005[37000000]01                    add byte [nr_cif_pare], 1   ; daca este par, incrementez nr cifrelor pare
+    63 00000061 50                                  push dword eax              ; afisez cifra
+    64 00000062 68[33000000]                        push dword format_nr        
+    65 00000067 FF15[00000000]                      call [printf]
+    66 0000006D 83C408                              add esp, 4 * 2
+    67                                              e_impar:
+    68 00000070 59                                  pop ecx          
+    69 00000071 E2DF                            loop repeta
+    70                                          
+    71                                          ; Afisez numarul de cifre pare
+    72 00000073 FF35[37000000]                  push dword [nr_cif_pare]
+    73 00000079 68[15000000]                    push dword format_rez
+    74 0000007E FF15[00000000]                  call [printf]
+    75 00000084 83C408                          add esp, 4 * 2
+    76                                          
+    77                                          invalid :
+    78                                          
+    79 00000087 6A00                            push    dword 0  
+    80 00000089 FF15[00000000]                  call    [exit]    
