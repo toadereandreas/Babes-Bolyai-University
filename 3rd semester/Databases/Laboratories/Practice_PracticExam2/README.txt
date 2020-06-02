@@ -1,0 +1,1 @@
+Solution for the subject in Model practic.

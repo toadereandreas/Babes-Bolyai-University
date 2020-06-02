@@ -1,0 +1,1 @@
+Solution for the Model practic.pdf

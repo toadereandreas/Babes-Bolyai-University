@@ -1,0 +1,61 @@
+'''
+MATHS:
+ *               { false, lst is empty
+ * exists(a,lst):{ true, a == lst[0]
+ *               { exists(a,(l1,..,ln)), a != lst[0]
+'''
+def exists(a,lst):
+    if len(lst) == 0:
+        return False
+    if a == lst[0]:
+        return True
+    else:
+        return exists(a,lst[1:])
+'''
+MATHS:
+ *                         { true,  len((l1,..,ln)) == 1
+ *  theListIsAlsoSet(list):{ false, exists(l1,(l2,..,ln]) == true
+ *                         { thisListIsAlsoSet((l1,..,ln)),  otherwise
+'''
+def listIsSet(lst):
+    if len(lst) == 1 or len(lst) == 0:
+        return True
+    else:
+        #if lst[0] in lst[1:]:
+        if exists(lst[0],lst[1:]) == True:
+            return False
+        else:
+            return listIsSet(lst[1:])
+            
+'''
+MATHS:
+ *                      { 0, l is NULL
+ * nrDistinct(l1,..,ln):{ 1 + nrDistinct(l2,..,ln),  l1 not in (l2,..,ln)
+                        { nrDistinct(l2,..,ln), l1 in (l2,..,ln)
+ *
+'''
+def nrDistinct(lst):
+    if not lst:
+        return 0
+    if exists(lst[0],lst[1:]) == True:
+        return nrDistinct(lst[1:])
+    else:
+        return 1 + nrDistinct(lst[1:])
+            
+list = [1,2,3,4,4,4,4,5]
+result = listIsSet(list)
+dist = nrDistinct(list)
+print(result)
+print(dist)
+
+list = [1,2,3,4,5,6,7,9]
+result = listIsSet(list)
+dist = nrDistinct(list)
+print(result)
+print(dist)
+
+list = []
+result = listIsSet(list)
+dist = nrDistinct(list)
+print(result)
+print(dist)

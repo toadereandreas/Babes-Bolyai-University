@@ -1,0 +1,1 @@
+All materials for the Probability theory and statistics course, along with the solutions for the laboratories.

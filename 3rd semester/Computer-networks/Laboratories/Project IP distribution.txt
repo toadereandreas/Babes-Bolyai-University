@@ -1,0 +1,64 @@
+Network IP: 196.206.110.0
+Mask: 255.255.254.0 (/23) => 2^9 = 512 IP addresses
+
+N1: 104 IPs -> requires subnetwork of 128 => 196.206.110.0/25
+	Network IP: 196.206.110.0
+	Mask: 255.255.255.128
+	Broadcast IP: 196.206.110.127
+	Hosts IPs: 196.206.110.1 ... 196.206.110.126
+
+N2: 104 IPs -> requires subnetwork of 128 => 196.206.110.128/25 
+	Mask: 255.255.255.128
+	Network IP: 196.206.110.128
+	Broadcast IP: 196.206.110.255
+	Hosts IPs: 196.206.110.129 ... 196.206.110.253
+
+N3: 40 IPs -> requires subnetwork of 64 => 197.207.111.0/26 
+	Mask: 255.255.255.192
+	Network IP: 197.207.111.0
+	Broadcast IP: 197.207.111.63
+	Hosts IPs: 197.207.111.1 ... 197.207.111.62
+
+N4: 32 IPs -> requires subnetwork of 64 => 197.207.111.64/26 
+	Mask: 255.255.255.192
+	Network IP: 197.207.111.64
+	Broadcast IP: 197.207.111.127
+	Hosts IPs: 197.207.111.65 ... 197.207.111.126
+
+N5: 8 IPs -> requires subnetwork of 16 => 197.207.111.128/29
+	Mask: 255.255.255.240
+	Network IP: 197.207.111.128
+	Broadcast IP: 197.207.111.143
+	Hosts IPs: 197.207.111.129 ... 197.207.111.142
+
+We also need networks between the routers:
+
+N1-2-3: R1-R2-R3-Switch -> requires subnetwork of 8 => 197.207.111.144/29
+	Mask: 255.255.255.248  
+	Network IP: 197.207.111.144
+	Broadcast IP: 197.207.111.151
+	Hosts IPs: 197.207.111.145 ... 197.207.111.150
+
+N3-4: R3-R4 -> requires subnetwork of 4 => 197.207.111.152/30
+	Mask: 255.255.255.252 
+	Network IP: 197.207.111.152
+	Broadcast IP: 197.207.111.155
+	Hosts IPs: 197.207.111.153 & 197.207.111.154
+
+N4-5: R4-R5 -> requires subnetwork of 4 => 197.207.111.156/30
+	Mask: 255.255.255.252   
+	Network IP: 197.207.111.156
+	Broadcast IP: 197.207.111.159
+	Hosts IPs: 197.207.111.157 & 197.207.111.158
+
+N1-4: R1-R4 -> requires subnetwork of 4 => 197.207.111.160/30
+	Mask: 255.255.255.252   
+	Network IP: 197.207.111.160
+	Broadcast IP: 197.207.111.163
+	Hosts IPs: 197.207.111.161 & 197.207.111.162
+
+N5-W: R5-RW -> requires subnetwork of 4 => 197.207.111.164/30
+	Mask: 255.255.255.252   
+	Network IP: 197.207.111.164
+	Broadcast IP: 197.207.111.167
+	Hosts IPs: 197.207.111.165 & 197.207.111.166

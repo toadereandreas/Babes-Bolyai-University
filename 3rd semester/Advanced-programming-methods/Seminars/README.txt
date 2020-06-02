@@ -1,0 +1,1 @@
+The Advanced programming methods course seminars: along the semester we developed a "toy language" using a Java interpretor. At each seminar we discussed the next implementation of new features.

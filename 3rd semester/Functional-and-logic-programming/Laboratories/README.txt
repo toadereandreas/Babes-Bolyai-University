@@ -1,0 +1,1 @@
+Solution to laboratories assignments in LISP and PROLOG.
