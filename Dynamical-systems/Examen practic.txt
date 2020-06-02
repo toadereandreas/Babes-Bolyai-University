@@ -1,0 +1,234 @@
+> ec:= diff(x(t),$(t,2)) + 9*x(t) = 0;
+
+                          / 2      \
+                          |d       |
+                    ec := |--- x(t)| + 9 x(t) = 0
+                          |  2     |
+                          \dt      /
+
+> dsolve(ec,x(t));
+
+                  x(t) = _C1 sin(3 t) + _C2 cos(3 t)
+
+> ec2 := diff(x(t),$(t,2)) + 9*x(t) = 0;
+
+                           / 2      \
+                           |d       |
+                    ec2 := |--- x(t)| + 9 x(t) = 0
+                           |  2     |
+                           \dt      /
+
+> cond2 := x((Pi)/2) = 0, D(x)((Pi)/2) = -2;
+
+                            Pi              Pi
+                cond2 := x(----) = 0, D(x)(----) = -2
+                            2               2
+
+> sol2 := dsolve({ec2,cond2},x(t));
+
+                     sol2 := x(t) = -2/3 cos(3 t)
+
+> with(DEtools):
+> DEplot( diff(x(t),$(t,2)) + 9*x(t) = 0, x(t), t = -5..5, [[x((Pi/2)) = 0, D(x)((Pi)/2) = -2]], stepsize = 0.01, linecolor=[black]);
+
+> 
+> 
+> 
+> plot(-2/3 * cos(3*t),t=-5..5);
+
+> 
+> 
+> restart;
+> ec1 := diff(x(t),t) = x(t)^2*(y-x);
+
+                           d             2
+                    ec1 := -- x(t) = x(t)  (y - x)
+                           dt
+
+> ec2 := diff(y(t),t) = -1 + x(t)^2 * y(t);
+
+                          d                  2
+                   ec2 := -- y(t) = -1 + x(t)  y(t)
+                          dt
+
+> sol1 := solve({-1+(x^2)*y,x^2*y-x^3},{x,y});
+
+                                        2
+  sol1 := {x = 1, y = 1}, {x = RootOf(_Z  + _Z + 1, label = _L11),
+
+                     2
+        y = RootOf(_Z  + _Z + 1, label = _L11)}
+
+> with(linalg);
+Warning, the previous binding of the name Wronskian has been removed and it now has an assigned value
+
+
+  [BlockDiagonal, GramSchmidt, JordanBlock, LUdecomp, QRdecomp,
+
+        Wronskian, addcol, addrow, adj, adjoint, angle, augment,
+
+        backsub, band, basis, bezout, blockmatrix, charmat, charpoly,
+
+        cholesky, col, coldim, colspace, colspan, companion, concat,
+
+        cond, copyinto, crossprod, curl, definite, delcols, delrows,
+
+        det, diag, diverge, dotprod, eigenvals, eigenvalues,
+
+        eigenvectors, eigenvects, entermatrix, equal, exponential,
+
+        extend, ffgausselim, fibonacci, forwardsub, frobenius,
+
+        gausselim, gaussjord, geneqns, genmatrix, grad, hadamard,
+
+        hermite, hessian, hilbert, htranspose, ihermite, indexfunc,
+
+        innerprod, intbasis, inverse, ismith, issimilar, iszero,
+
+        jacobian, jordan, kernel, laplacian, leastsqrs, linsolve,
+
+        matadd, matrix, minor, minpoly, mulcol, mulrow, multiply,
+
+        norm, normalize, nullspace, orthog, permanent, pivot,
+
+        potential, randmatrix, randvector, rank, ratform, row, rowdim,
+
+        rowspace, rowspan, rref, scalarmul, singularvals, smith,
+
+        stackmatrix, submatrix, subvector, sumbasis, swapcol, swaprow,
+
+        sylvester, toeplitz, trace, transpose, vandermonde, vecpotent,
+
+        vectdim, vector, wronskian]
+
+> with(VectorCalculus);
+Warning, the assigned name Wronskian now has a global binding
+
+
+  [&x, *, +, ., <,>, <|>, AddCoordinates, ArcLength, BasisFormat,
+
+        Binormal, CrossProduct, Curl, Curvature, Del, DirectionalDiff,
+
+        Divergence, DotProduct, Flux, GetCoordinateParameters,
+
+        GetCoordinates, Gradient, Hessian, Jacobian, Laplacian,
+
+        LineInt, MapToBasis, Nabla, PathInt, PrincipalNormal,
+
+        RadiusOfCurvature, ScalarPotential, SetCoordinateParameters,
+
+        SetCoordinates, SurfaceInt, TNBFrame, Tangent, TangentLine,
+
+        TangentPlane, TangentVector, Torsion, Vector, VectorField,
+
+        VectorPotential, Wronskian, diff, evalVF, int, limit, series]
+
+> Jm := Jacobian([x^2*y-x^3,-1+(x^2)*y],[x,y]);
+
+                            [           2     2]
+                            [2 x y - 3 x     x ]
+                      Jm := [                  ]
+                            [                 2]
+                            [   2 x y        x ]
+
+> eq1 := sol1[1];
+
+                        eq1 := {x = 1, y = 1}
+
+> A1 := subs(eq1,Jm);
+
+                                 [-1    1]
+                           A1 := [       ]
+                                 [ 2    1]
+
+> eigenvalues(A1);
+
+                              1/2    1/2
+                             3   , -3
+
+> eq2 := sol1[2];
+
+                       2
+  eq2 := {x = RootOf(_Z  + _Z + 1, label = _L11),
+
+                     2
+        y = RootOf(_Z  + _Z + 1, label = _L11)}
+
+> A2 := subs(eq2,Jm);
+
+                                [-%1     %1]
+                          A2 := [          ]
+                                [2 %1    %1]
+
+                               2                        2
+                %1 := RootOf(_Z  + _Z + 1, label = _L11)
+
+> eigenvalues(A2);
+
+                            2                             2
+         RootOf(-3 RootOf(_Z  + _Z + 1, label = _L11) + _Z )
+
+> 
+> 
+> 
+> 
+> ec4 := diff(y(x),x)/diff(x(t),t) = (-1 + x(t)^2)/(x(t)^2*(y(x)-x(t)));
+
+                        d
+                        -- y(x)            2
+                        dx             x(t)  - 1
+                 ec4 := ------- = -------------------
+                        d             2
+                        -- x(t)   x(t)  (y(x) - x(t))
+                        dt
+
+> sol4 := dsolve(diff(y(x),x) = (-1+x^2*y(x))/(x^2*(y(x)-x)) ,y(x));
+
+                    2       4                2 1/2
+                 2 x  + 2 (x  + 2 x + 2 _C1 x )
+  sol4 := y(x) = ---------------------------------,
+                                2 x
+
+                  2       4                2 1/2
+               2 x  - 2 (x  + 2 x + 2 _C1 x )
+        y(x) = ---------------------------------
+                              2 x
+
+> expand(rhs(sol4));
+Error, wrong number (or type) of parameters in function rhs
+
+> restart;
+> 
+> ?contourplot
+> with(plots):
+Warning, the name changecoords has been redefined
+
+> contourplot((-2+x*y^2-2*x^2*y)/(2*x),x=-100..100,y=-100..100);
+> 
+
+> d := (-2+x*y^2-2*x^2*y)/(2*x) * x^2*(y-x) - ((-2+x*y^2-2*x^2*y)/(2*x) * (1-x^2*y));
+> 
+
+                2      2
+       (-2 + x y  - 2 x  y) x (y - x)
+  d := ------------------------------
+                     2
+
+                    2      2          2
+           (-2 + x y  - 2 x  y) (1 - x  y)
+         - -------------------------------
+                         2 x
+
+> d2 := (-2+x*y^2-2*x^2*y)/(2*x) * x^2*(y-x) - ((-2+x*y^2-2*x^2*y)/(2*x) * (1-x^2*y));
+
+                 2      2
+        (-2 + x y  - 2 x  y) x (y - x)
+  d2 := ------------------------------
+                      2
+
+                    2      2          2
+           (-2 + x y  - 2 x  y) (1 - x  y)
+         - -------------------------------
+                         2 x
+
+> 

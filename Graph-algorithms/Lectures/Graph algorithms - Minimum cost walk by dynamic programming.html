@@ -1,0 +1,65 @@
+
+<!-- saved from url=(0059)http://www.cs.ubbcluj.ro/~rlupsa/edu/grafe/min-walk-dp.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <link rel="StyleSheet" href="./Graph algorithms - Minimum cost walk by dynamic programming_files/normal-style.css" type="text/css">
+ <title>Graph algorithms - Minimum cost walk by dynamic programming</title>
+</head>
+<body>
+<address class="topnav">
+  <a href="http://www.cs.ubbcluj.ro/~rlupsa/index-en.html">home page</a> -&gt;
+  <a href="http://www.cs.ubbcluj.ro/~rlupsa/edu/index.html">teaching</a> -&gt;
+  <a href="http://www.cs.ubbcluj.ro/~rlupsa/edu/grafe/index.html">graph algorithms</a> -&gt;
+  <span class="selflink">Minimum cost walk by dynamic programming</span>
+</address>
+
+<h1><center>Graph algorithms - Minimum cost walk by dynamic programming</center></h1>
+
+<p>
+Find minimum cost walk in presence of negative cost edges (but no negative cost cycles).
+</p>
+
+<p>Note: if there is a negative cost cycle that can be inserted into the walk from start to end,
+then there is no minimum cost walk - by repeating the
+cycle, we can obtain walks of cost as small as we want</p>
+
+<p>
+<i>s</i> = starting vertex, <i>t</i> = ending (target) vertex.
+</p>
+
+<h2>Distances in the graph</h2>
+
+<p>Define <i>d(x,y)</i>= the cost of the minimum cost walk from <i>x</i> to <i>y</i>, or &#8734; if
+<i>y</i> is inaccessible from <i>x</i>.</p>
+
+<p>Note that there is always a path achieving <i>d(x,y)</i>
+(if <i>y</i> is accessible from <i>x</i> at all).</p>
+
+<h2>Minimum cost walks by length</h2>
+<p>
+Define <i>w<sub>k,x</sub></i> = the cost of minimum cost walk of length at most <i>k</i> from
+<i>s</i> to <i>x</i>, or &#8734; if no such walk exists.
+</p>
+<p>
+We have a recurrence relation:</p><ul>
+  <li><i>w<sub>0,s</sub>=0</i>;
+  </li><li><i>w<sub>0,x</sub>=&#8734;</i>, for <i>x&#8800;s</i>;
+  </li><li><i>w<sub>k+1,x</sub></i>=min(<i>w<sub>k,x</sub></i>,
+      min<sub>y&#8712;N<sup>in</sup>(x)</sub>(<i>w<sub>k,y</sub></i>+c(y,x)));
+</li></ul>
+
+<p>Based on the recurrence relation above, we can easily compute <i>w<sub>k,x</sub></i> for any
+vertex <i>x</i> and for any natural number <i>k</i>. We compute <i>w</i> row by row
+(in increasing order of <i>k</i>).</p>
+
+<p>Since the minimum cost is always achieved by a path, <i>d<sub>n-1,t</sub></i> gives the minimum
+cost from <i>s</i> to <i>t</i>.</p>
+
+<p>To retrieve the path, we go back from <i>t</i>,
+reconstructing how we achieved each value of <i>w</i>.
+
+</p><address class="signature">
+<a href="http://www.cs.ubbcluj.ro/~rlupsa/index-en.html">Radu-Lucian LUP&#350;A</a><br>
+2016-03-10
+</address>
+
+</body></html>

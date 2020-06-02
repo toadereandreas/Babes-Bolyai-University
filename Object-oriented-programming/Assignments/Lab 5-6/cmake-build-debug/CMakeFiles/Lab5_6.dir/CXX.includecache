@@ -1,0 +1,72 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Bussines.cpp
+Bussines.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Bussines.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Bussines.h
+Repository.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Repository.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Domain.h
+iostream
+-
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/DynamicVector.cpp
+DynamicVector.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/DynamicVector.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/DynamicVector.h
+Domain.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Domain.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Repository.cpp
+Repository.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Repository.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Repository.h
+Domain.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Domain.h
+DynamicVector.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/DynamicVector.h
+cstring
+-
+string
+-
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/UI.cpp
+UI.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/UI.h
+string
+-
+cstring
+-
+sstream
+-
+iostream
+-
+Windows.h
+-
+shellapi.h
+-
+thread
+-
+chrono
+-
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/UI.h
+Bussines.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/Bussines.h
+
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/main.cpp
+UI.h
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/UI.h
+assert.h
+-
+

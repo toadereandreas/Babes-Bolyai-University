@@ -1,0 +1,3 @@
+D:/University/SEM 2/GRAF/Assignments/Work 2 V2/cmake-build-debug/CMakeFiles/Work_2_V2.dir
+D:/University/SEM 2/GRAF/Assignments/Work 2 V2/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/University/SEM 2/GRAF/Assignments/Work 2 V2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

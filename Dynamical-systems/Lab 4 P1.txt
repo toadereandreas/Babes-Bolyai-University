@@ -1,0 +1,78 @@
+> ex1 := 0 = 1 - x ^ 2;
+> 
+
+                                          2
+                          ex1 := 0 = 1 - x
+
+> sol1 := solve(ex1,x);
+
+                            sol1 := 1, -1
+
+> ec1 := diff(x(t),t) = 1 - x(t)^2;
+> 
+
+                             d                 2
+                      ec1 := -- x(t) = 1 - x(t)
+                             dt
+
+> sol1_1 := dsolve(ec1,x(t));
+
+                    sol1_1 := x(t) = tanh(t + _C1)
+
+> f1_1 := unapply(rhs(sol1_1),t,_C1);
+
+                  f1_1 := (t, _C1) -> tanh(t + _C1)
+
+> dsolve({ec1,x(0)=1});
+
+                               x(t) = 1
+
+> dsolve({ec1,x(0)=-1});
+
+                              x(t) = -1
+
+> dsolve({ec1,x(0)=1/5});
+
+                     x(t) = tanh(t + 1/2 ln(3/2))
+
+> dsolve({ec1,x(0)=5});
+
+                     x(t) = coth(t + 1/2 ln(3/2))
+
+> dsolve({ec1,x(0)=-5});
+
+                     x(t) = coth(t + 1/2 ln(2/3))
+
+> 
+> dsolve({ec1,x(0)=0});
+
+                            x(t) = tanh(t)
+
+> ?plot
+> plot(f1_1(x,_C1),x=-1 ... 1);
+Plotting error, empty plot
+> f1_1(x,_C1);
+
+                            tanh(x + _C1)
+
+> plot(tanh(t),t=-1...1);
+
+> limit(tanh(t), t=infinity);
+
+                                  1
+
+> limit(f1_1(t,2),t=infinity);
+
+                                  1
+
+> limit(f1_1(t,-2),t=infinity);
+
+                                  1
+
+> limit(f1_1(t,0),t=infinity);
+
+                                  1
+
+> plot(f1_1(t,),t);
+
+> 

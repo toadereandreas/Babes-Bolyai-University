@@ -1,0 +1,108 @@
+ec3 := diff(y(x),x)= -x/y(x);
+                              d            x
+                       ec3 := -- y(x) = - ----
+                              dx          y(x)
+
+> ?dfieldplot
+> 
+> with(DEtools);
+
+  [DEnormal, DEplot, DEplot3d, DEplot_polygon, DFactor, DFactorLCLM,
+
+        DFactorsols, Dchangevar, GCRD, LCLM, MeijerGsols,
+
+        PDEchangecoords, RiemannPsols, Xchange, Xcommutator, Xgauge,
+
+        abelsol, adjoint, autonomous, bernoullisol, buildsol,
+
+        buildsym, canoni, caseplot, casesplit, checkrank, chinisol,
+
+        clairautsol, constcoeffsols, convertAlg, convertsys,
+
+        dalembertsol, dcoeffs, de2diffop, dfieldplot, diffop2de,
+
+        dpolyform, dsubs, eigenring, endomorphism_charpoly, equinv,
+
+        eta_k, eulersols, exactsol, expsols, exterior_power, firint,
+
+        firtest, formal_sol, gen_exp, generate_ic, genhomosol, gensys,
+
+        hamilton_eqs, hypergeomsols, hyperode, indicialeq, infgen,
+
+        initialdata, integrate_sols, intfactor, invariants,
+
+        kovacicsols, leftdivision, liesol, line_int, linearsol,
+
+        matrixDE, matrix_riccati, maxdimsystems, moser_reduce,
+
+        muchange, mult, mutest, newton_polygon, normalG2, odeadvisor,
+
+        odepde, parametricsol, phaseportrait, poincare, polysols,
+
+        power_equivalent, ratsols, redode, reduceOrder, reduce_order,
+
+        regular_parts, regularsp, remove_RootOf, riccati_system,
+
+        riccatisol, rifread, rifsimp, rightdivision, rtaylor,
+
+        separablesol, solve_group, super_reduce, symgen,
+
+        symmetric_power, symmetric_product, symtest, transinv,
+
+        translate, untranslate, varparam, zoom]
+
+> dfieldplot(ec3,y(x),x=-1..1,y=-1..1);
+
+> H:=(x,y)->x^2+y^2;
+
+                                        2    2
+                        H := (x, y) -> x  + y
+
+> with(plots):contourplot(H(x,y),x=-2..2,y=-2..2);
+Warning, the name changecoords has been redefined
+
+
+> ?dshe
+> ec5_1 := diff(x(t),t) = -y(t);
+
+                                d
+                       ec5_1 := -- x(t) = -y(t)
+                                dt
+
+> ec5_2 := diff(y(t),t) = x(t);
+
+                                d
+                       ec5_2 := -- y(t) = x(t)
+                                dt
+
+> cond5 := x(0) = 1, y(0) =1;
+
+                     cond5 := x(0) = 1, y(0) = 1
+
+> sol5 := dsolve({ec5_1,x(0)=1,ec5_2,y(0)=1},{x(t),y(t)});
+
+       sol5 := {x(t) = cos(t) - sin(t), y(t) = sin(t) + cos(t)}
+
+> plot([rhs(sol5[1]),rhs(sol5[2]),t=0..10]);
+
+> ec35_1 := diff(x(t),t) = - x(t) + 3 * y(t);
+
+                            d
+                  ec35_1 := -- x(t) = -x(t) + 3 y(t)
+                            dt
+
+> ec35_2 := diff(y(t),t) = -3*x(t) - y(t);
+
+                            d
+                  ec35_2 := -- y(t) = -3 x(t) - y(t)
+                            dt
+
+> sol35 := dsolve({ec35_1,ec35_2,x(0)=1,y(0)=1},{x(t),y(t)});
+
+  sol35 := {x(t) = -exp(-t) (-cos(3 t) - sin(3 t)),
+
+        y(t) = exp(-t) (-sin(3 t) + cos(3 t))}
+
+> plot([rhs(sol35[1]),rhs(sol35[2]),t=0..100]);
+
+> 

@@ -1,0 +1,11 @@
+﻿  Uic'ing studentgrades.ui...
+  Rcc'ing studentgrades.qrc...
+RCC : warning : No resources in 'D:\University\SEM 2\OOP\Seminars\Seminar 06 Demo\StudentGrades\studentgrades.qrc'.
+  
+  qrc_studentgrades.cpp
+  main.cpp
+  Repository.cpp
+  Student.cpp
+  Utils.cpp
+  Generating Code...
+  StudentGrades.vcxproj -> D:\University\SEM 2\OOP\Seminars\Seminar 06 Demo\x64\Debug\StudentGrades.exe

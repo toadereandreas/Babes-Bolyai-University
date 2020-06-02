@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SLLA.h
+algorithm
+-
+exception
+-
+iostream
+-
+SLLA_iterator.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SLLA_iterator.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SLLA_iterator.h
+SLLA.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SLLA.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SMMIterator.h
+SortedMultiMap.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SortedMultiMap.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SortedMultiMap.cpp
+SortedMultiMap.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SortedMultiMap.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SortedMultiMap.h
+vector
+-
+utility
+-
+SLLA.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SLLA.h
+SMMIterator.h
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/SMMIterator.h
+

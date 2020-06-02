@@ -1,0 +1,3 @@
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/cmake-build-debug/CMakeFiles/Assignment_4_P21.dir
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/University/SEM 2/SDA/Assignments/Assignment 4 P21/cmake-build-debug/CMakeFiles/rebuild_cache.dir

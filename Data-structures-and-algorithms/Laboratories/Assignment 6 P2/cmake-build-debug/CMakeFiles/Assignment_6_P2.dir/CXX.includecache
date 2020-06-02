@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Hash.h
+Triplet.h
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Triplet.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Iterator.h
+iostream
+-
+Hash.h
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Hash.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Tests.h
+Hash.h
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Hash.h
+assert.h
+-
+exception
+-
+
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Triplet.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/main.cpp
+iostream
+-
+Tests.h
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Tests.h
+Iterator.h
+D:/University/SEM 2/SDA/Assignments/Assignment 6 P2/Iterator.h
+

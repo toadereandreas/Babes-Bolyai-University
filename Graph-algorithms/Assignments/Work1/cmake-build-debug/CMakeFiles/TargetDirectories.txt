@@ -1,0 +1,3 @@
+D:/Facultee/GRAF/Work1/cmake-build-debug/CMakeFiles/Work1.dir
+D:/Facultee/GRAF/Work1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Facultee/GRAF/Work1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

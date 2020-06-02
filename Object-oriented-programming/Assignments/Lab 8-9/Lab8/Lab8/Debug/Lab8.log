@@ -1,0 +1,10 @@
+﻿  Bussines.cpp
+  Comparator.cpp
+  Domain.cpp
+  DynamicVector.cpp
+  Lab8.cpp
+D:\University\SEM 2\OOP\Assignments\Lab 8-9\Lab8\Lab8\Lab8.cpp(128): warning C4101: 'year': unreferenced local variable
+  Repository.cpp
+  UI.cpp
+  Generating Code...
+  Lab8.vcxproj -> D:\University\SEM 2\OOP\Assignments\Lab 8-9\Lab8\Debug\Lab8.exe

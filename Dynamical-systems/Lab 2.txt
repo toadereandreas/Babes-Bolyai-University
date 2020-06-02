@@ -1,0 +1,237 @@
+> eq1 := diff(x(t), `$`(t, 2))+3*(diff(x(t), t))+x(t) = 1;
+print(`output redirected...`); # input placeholder
+           / d  / d      \\     / d      \           
+           |--- |--- x(t)|| + 3 |--- x(t)| + x(t) = 1
+           \ dt \ dt     //     \ dt     /           
+> sol1 := dsolve(eq1, x(t));
+print(`output redirected...`); # input placeholder
+          /1 / (1/2)    \  \          /  1 / (1/2)    \  \        
+x(t) = exp|- \5      - 3/ t| _C2 + exp|- - \5      + 3/ t| _C1 + 1
+          \2               /          \  2               /        
+> limit(sol1, t = infinity);
+print(`output redirected...`); # input placeholder
+                 limit(x(t), t = infinity) = 1
+> sol2 := solve({-y+x*y, 2*x-x^2-x*y}, {x, y});
+print(`output redirected...`); # input placeholder
+         {x = 0, y = 0}, {x = 2, y = 0}, {x = 1, y = 1}
+> with(linalg);
+> with(VectorCalculus);
+> 
+> 
+> jm := Jacobian([2*x-x^2-x*y, -y+x*y], [x, y]);
+print(`output redirected...`); # input placeholder
+                    Matrix(%id = 709292296)
+> A1 := subs({x = 0, y = 0}, jm);
+print(`output redirected...`); # input placeholder
+                    Matrix(%id = 709824672)
+> A2 := subs({x = 2, y = 0}, jm);
+print(`output redirected...`); # input placeholder
+                    Matrix(%id = 709957392)
+> A3 := subs({x = 1, y = 1}, jm);
+print(`output redirected...`); # input placeholder
+                    Matrix(%id = 709957544)
+> eigenvalues(A1);
+print(`output redirected...`); # input placeholder
+                             2, -1
+> eigenvalues(A2);
+print(`output redirected...`); # input placeholder
+                             -2, 1
+> eigenvalues(A3);
+print(`output redirected...`); # input placeholder
+                 1   1    (1/2)    1   1    (1/2)
+               - - + - I 3     , - - - - I 3     
+                 2   2             2   2         
+
+> with(DETools);
+print(`output redirected...`); # input placeholder
+[AreSimilar, Closure, DEnormal, DEplot, DEplot3d, DEplot_polygon, 
+
+  DFactor, DFactorLCLM, DFactorsols, Dchangevar, Desingularize, 
+
+  FunctionDecomposition, GCRD, Gosper, Heunsols, Homomorphisms, 
+
+  IVPsol, IsHyperexponential, LCLM, MeijerGsols, 
+
+  MultiplicativeDecomposition, ODEInvariants, PDEchangecoords, 
+
+  PolynomialNormalForm, RationalCanonicalForm, ReduceHyperexp, 
+
+  RiemannPsols, Xchange, Xcommutator, Xgauge, Zeilberger, 
+
+  abelsol, adjoint, autonomous, bernoullisol, buildsol, buildsym, 
+
+  canoni, caseplot, casesplit, checkrank, chinisol, clairautsol, 
+
+  constcoeffsols, convertAlg, convertsys, dalembertsol, dcoeffs, 
+
+  de2diffop, dfieldplot, diff_table, diffop2de, dperiodic_sols, 
+
+  dpolyform, dsubs, eigenring, endomorphism_charpoly, equinv, 
+
+  eta_k, eulersols, exactsol, expsols, exterior_power, firint, 
+
+  firtest, formal_sol, gen_exp, generate_ic, genhomosol, gensys, 
+
+  hamilton_eqs, hypergeomsols, hyperode, indicialeq, infgen, 
+
+  initialdata, integrate_sols, intfactor, invariants, 
+
+  kovacicsols, leftdivision, liesol, line_int, linearsol, 
+
+  matrixDE, matrix_riccati, maxdimsystems, moser_reduce, 
+
+  muchange, mult, mutest, newton_polygon, normalG2, ode_int_y, 
+
+  ode_y1, odeadvisor, odepde, parametricsol, particularsol, 
+
+  phaseportrait, poincare, polysols, power_equivalent, 
+
+  rational_equivalent, ratsols, redode, reduceOrder, 
+
+  reduce_order, regular_parts, regularsp, remove_RootOf, 
+
+  riccati_system, riccatisol, rifread, rifsimp, rightdivision, 
+
+  rtaylor, separablesol, singularities, solve_group, 
+
+  super_reduce, symgen, symmetric_power, symmetric_product, 
+
+  symtest, transinv, translate, untranslate, varparam, zoom]
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = 0, y(0) = .1]]);
+%;
+
+
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = .1, y(0) = .2]]);
+%;
+
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = -.1, y(0) = .1]]);
+%;
+Warning, plot may be incomplete, the following errors(s) were issued:
+   cannot evaluate the solution further right of 1.5495207, probably a singularity
+
+
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = 2, y(0) = .1]]);
+%;
+
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = 1.9, y(0) = .1]]);
+%;
+
+> DEplot([diff(x(t), t) = 2*x(t)-x(t)^2-x(t)*y(t), diff(y(t), t) = -y(t)+x(t)*y(t)], [x(t), y(t)], t = 0 .. 9, [[x(0) = 1, y(0) = .7]]);
+%;
+
+
+
+> f := proc (x) options operator, arrow; 3+.12*sin(x) end proc;
+print(`output redirected...`); # input placeholder
+x -> VectorCalculus:-+(3, VectorCalculus:-*(0.12, sin(x)))
+
+> x := .5;
+print(`output redirected...`); # input placeholder
+                              0.5
+> for i to 30 do x := f(x); psi[i] := x; print(x) end do;
+print(`output redirected...`); # input placeholder
+                          3.057531065
+                          3.010075515
+                          3.015736600
+                          3.015062887
+                          3.015143090
+                          3.015133543
+                          3.015134679
+                          3.015134544
+                          3.015134560
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+
+
+> x := .67;
+print(`output redirected...`); # input placeholder
+                              0.67
+> 
+> for i to 30 do x := f(x); print(x) end do;
+print(`output redirected...`); # input placeholder
+                          3.074518318
+                          3.008042886
+                          3.015978376
+                          3.015034103
+                          3.015146517
+                          3.015133135
+                          3.015134728
+                          3.015134538
+                          3.015134561
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+> 
+> x := .125;
+print(`output redirected...`); # input placeholder
+                             0.125
+> for i to 30 do x := f(x); print(x) end do;
+print(`output redirected...`); # input placeholder
+                          3.014960968
+                          3.015155223
+                          3.015132098
+                          3.015134851
+                          3.015134523
+                          3.015134562
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+                          3.015134558
+

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/University/SEM 2/SDA/Assignments/Assignment 5 P8/Heap.h
+
+D:/University/SEM 2/SDA/Assignments/Assignment 5 P8/main.cpp
+iostream
+-
+Heap.h
+D:/University/SEM 2/SDA/Assignments/Assignment 5 P8/Heap.h
+

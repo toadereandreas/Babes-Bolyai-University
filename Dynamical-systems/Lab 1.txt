@@ -1,0 +1,65 @@
+> eq1 := diff(x(t), t) = x(t)+y(t)+t-1;
+                  d                            
+                 --- x(t) = x(t) + y(t) + t - 1
+                  dt                           
+> eq2 := diff(y(t), t) = -2*x(t)+4*y(t)+exp(t);
+               d                                  
+              --- y(t) = -2 x(t) + 4 y(t) + exp(t)
+               dt                                 
+> dsolve({eq1, eq2}, {x(t), y(t)});
+   /                                     5    2     1         
+  { x(t) = exp(2 t) _C2 + exp(3 t) _C1 + -- - - t + - exp(t), 
+   \                                     18   3     2         
+
+                                           1    1  \ 
+    y(t) = exp(2 t) _C2 + 2 exp(3 t) _C1 + -- - - t }
+                                           18   3  / 
+> 
+> 
+> eq3 := diff(x(t), t) = y(t)+x(t)^2;
+                     d                    2
+                    --- x(t) = y(t) + x(t) 
+                     dt                    
+> eq4 := diff(y(t), t) = -x(t)+x(t)*y(t);
+                   d                          
+                  --- y(t) = -x(t) + x(t) y(t)
+                   dt                         
+> solve({-x+x*y, y+x^2}, {x, y});
+                          /          /  2    \       \ 
+         {x = 0, y = 0}, { x = RootOf\_Z  + 1/, y = 1 }
+                          \                          / 
+> with(linalg);
+> with(VectorCalculus);
+> Jm1 := Jacobian([y+x^2, -x+x*y], [x, y]);
+                  Jm1:=Matrix(%id = 708702472)
+> A := subs({x = 0, y = 0}, Jm1);
+                   A:=Matrix(%id = 709234984)
+> eigenvalues(A);
+                             I, -I
+> sol1 := dsolve(diff(y(x), x) = (-x+x*y(x))/(y(x)+x^2), y(x));
+                                                  (1/2)  
+                            /                   2\       
+               -1 - 2 _C1 + \1 + 2 _C1 + 2 _C1 x /       
+      y(x) = - ----------------------------------------, 
+                                2 _C1                    
+
+                                                 (1/2)
+                           /                   2\     
+               1 + 2 _C1 + \1 + 2 _C1 + 2 _C1 x /     
+        y(x) = ---------------------------------------
+                                2 _C1                 
+> expand(rhs(sol1[1])*rhs(sol1[2]));
+                                     2  
+                         1          x   
+                       ----- + 1 - -----
+                       2 _C1       2 _C1
+> eq5 := (2*y^2-2)/(1-x^2);
+                               2    
+                            2 y  - 2
+                            --------
+                                  2 
+                             1 - x  
+> with(plots);
+> contourplot(eq5, x = -.1 .. .1, y = -.1 .. .1);
+
+> 

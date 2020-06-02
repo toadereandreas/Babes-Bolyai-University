@@ -1,0 +1,3 @@
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/cmake-build-debug/CMakeFiles/Lab5_6.dir
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/University/SEM 2/OOP/Assignments/Lab 5-6/cmake-build-debug/CMakeFiles/rebuild_cache.dir

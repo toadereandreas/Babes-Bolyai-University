@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Andreas/Desktop/Lab 1/Set.h
+SetIterator.h
+C:/Users/Andreas/Desktop/Lab 1/SetIterator.h
+
+C:/Users/Andreas/Desktop/Lab 1/SetIterator.h
+
+C:/Users/Andreas/Desktop/Lab 1/main.cpp
+iostream
+-
+assert.h
+-
+Set.h
+C:/Users/Andreas/Desktop/Lab 1/Set.h
+

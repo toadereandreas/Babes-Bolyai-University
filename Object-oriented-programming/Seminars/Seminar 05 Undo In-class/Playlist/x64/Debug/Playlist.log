@@ -1,0 +1,5 @@
+﻿  Controller.cpp
+D:\University\SEM 2\OOP\Seminars\Seminar 05 Undo In-class\Playlist\Controller.cpp(37): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  Playlist.vcxproj -> D:\University\SEM 2\OOP\Seminars\Seminar 05 Undo In-class\x64\Debug\Playlist.exe
