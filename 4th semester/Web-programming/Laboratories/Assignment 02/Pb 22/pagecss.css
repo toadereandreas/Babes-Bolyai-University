@@ -1,0 +1,48 @@
+p {
+	font-size: 50px;
+}
+
+img {
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 30.8s ease-in-out;
+          transition:         transform 30.8s ease-in-out;
+}
+img:hover {
+  	-webkit-transform: rotate(99000deg);
+          transform: rotate(99000deg);
+}
+body {
+	color: white;
+	background-color: black;
+}
+
+.bigDiv{
+	position: relative;
+	height: 750px;
+	width: 85%;
+	<!--border: solid blue 10px;-->
+}
+
+
+.smallDiv {
+	
+	position:absolute;
+	bottom: 0;
+	height: 200px;
+	width: 200px;	
+	<!--border: solid red 10px;-->
+
+  	left: 0;
+    	-webkit-transition: all 2.5s ease-in-out;
+    	-moz-transition: all 2.5s ease-in-out;
+    	-o-transition: all 2.5s ease-in-out;
+    	transition: all 2.5s ease-in-out;
+}
+.smallDiv:hover {
+	<!--color:#fff;-->
+    	<!--background-color:#333333;-->
+	left: 75%;
+	padding-left: 100%;
+	bottom: 100%;
+	transform: translateY(100%);
+}

@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entries</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script>
+                    $(document).ready(function(){
+                        $("#button").click(function() {
+                            $.get("/Main/AddEntry", {email : $("#email").val(), title: $("#title").val(), comment: $("#comment").val(), date: $("#date").val()},
+                                function(data) {
+                                    $("#maindiv").html(data);
+                            });
+                        });
+                    });
+    </script>
+</head>
+<body>
+Add an entry
+email: <input type="text" id="email"/><br/>
+title: <input type="text" id="title"/><br/>
+comment: <input type="text" id="comment"/><br/>
+date: <input type="text" id="date"/><br/>
+<input id="button" type="button" value="Add entry"/>
+<div id="maindiv"></div><br/>
+</body>
+</html>

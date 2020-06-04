@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Write a HTML page which contains two lists (each with more then one line - use select tag). Click event on an element from the first list will move this element into the second one, and reverse.</h1>
+
+<label for="cars1" style="font-size: 20px;">Car list1:</label>
+
+<select id="cars1" onchange="myFunctionList1()" style="height: 30px; width: 200px; font-size: 20px;">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+<label for="cars" style="font-size: 20px;">Car list2:</label>
+
+<select id="cars2" onchange="myFunctionList2()" style="height: 30px; width: 200px; font-size: 20px;">
+  <option value="volvo">Bmw</option>
+  <option value="saab">Lamborghini</option>
+
+</select>
+  
+<script>
+function myFunctionList1() {
+	var select1Index = document.getElementById("cars1").selectedIndex;
+ 	var select1Options = document.getElementById("cars1").options;
+
+	// Add selected index on the other select
+    var select2 = document.getElementById("cars2");
+    var newSelect2Option = document.createElement("option");
+	newSelect2Option.text = select1Options[select1Index].text;
+    select2.add(newSelect2Option);
+    
+    // Remove selected index from select1
+    var select1 = document.getElementById("cars1");
+    select1.remove(select1.selectedIndex);
+}
+
+function myFunctionList2(){
+	var select2Index = document.getElementById("cars2").selectedIndex;
+ 	var select2Options = document.getElementById("cars2").options;
+    
+    // Add selected index on the other select
+    var select1 = document.getElementById("cars1");
+    var newSelect1Option = document.createElement("option");
+    newSelect1Option.text = select2Options[select2Index].text;
+    select1.add(newSelect1Option)
+    
+    // Remove selected index from select2
+    var select2 = document.getElementById("cars2");
+    select2.remove(select2.selectedIndex);
+}
+</script>  
+  
+</body>
+</html>

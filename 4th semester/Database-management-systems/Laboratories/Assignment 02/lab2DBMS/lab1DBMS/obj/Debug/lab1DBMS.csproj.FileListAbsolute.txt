@@ -1,0 +1,29 @@
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe.config
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.pdb
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.csprojAssemblyReference.cache
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.Form1.resources
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.Properties.Resources.resources
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.csproj.GenerateResource.cache
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.exe
+C:\Users\Marius\Desktop\university 2\SEM2\DBMSs\LABS\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.pdb
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe.config
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\bin\Debug\lab1DBMS.pdb
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.csprojAssemblyReference.cache
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.Form1.resources
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.Properties.Resources.resources
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.csproj.GenerateResource.cache
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.csproj.CoreCompileInputs.cache
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.exe
+C:\Users\Andreas\Desktop\lab1DBMS\lab1DBMS\obj\Debug\lab1DBMS.pdb
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe.config
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\bin\Debug\lab1DBMS.exe
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\bin\Debug\lab1DBMS.pdb
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.csprojAssemblyReference.cache
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.Form1.resources
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.Properties.Resources.resources
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.csproj.GenerateResource.cache
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.csproj.CoreCompileInputs.cache
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.exe
+D:\University\SEM 4\DBMS\Laboratories\Assignment 02\lab2DBMS\lab1DBMS\obj\Debug\lab1DBMS.pdb

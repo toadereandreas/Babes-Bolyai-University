@@ -1,0 +1,7 @@
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApp3\obj\Debug\ConsoleApp3.csprojAssemblyReference.cache

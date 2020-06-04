@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<div>
+<h3>
+Solve the following task using only the jQuery library (production version, jquery.min.js, or developement version, jquery.js); 
+YOU ARE NOT ALLOWED TO USE ANY OTHER JS LIBRARY, PLUGIN OR EXTENSION BESIDES THE JQUERY LIBRARY. 
+Write a web page which displays a horizontal dropdown menu. 
+Each menu should drop down in a transition/animation when the user clicks the menu title. 
+It should also not simply dissapear when the menu slides up again, it should be done in an animation. 
+You are not allowed to use any independent CSS code (except CSS properties set through jquery method calls).
+</h3>
+</div>
+
+<div>
+<ul id="nav">
+  <li><a href="#">Item 1</a>
+    <ul>  
+      <li><a href="#">Item 1.1</a></li>
+      <li><a href="#">Item 1.2</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 2</a>
+    <ul>  
+      <li><a href="#">Item 2.1</a></li>
+      <li><a href="#">Item 2.2</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 3</a>
+    <ul>  
+      <li><a href="#">Item 3.1</a></li>
+      <li><a href="#">Item 3.2</a></li>
+      <li><a href="#">Item 3.3</a></li>
+      <li><a href="#">Item 3.4</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<script>
+$(document).ready(function (){
+    $('#nav ul').css("list-style","none");
+    $('#nav').css("float", "left");
+    $('#nav > li').css("float", "left");
+    $('#nav li a').css({
+      "display": "block",
+      "padding": "10px",
+      "min-width":"80px",
+      "border":"1px solid #333",
+      "text-decoration": "none"
+    })
+    $('#nav ul').css({
+      "position": "absolute",
+      "margin":"0",
+      "padding":"0",
+      "display":"none",
+      "z-index": "999"
+    })
+    $('nav ul li a').css("width","80px");
+    
+  
+    $('#nav > li').each(function(){
+        var t = null;
+        var li = $(this);
+        li.hover(function(){
+            t = setTimeout(function(){
+                li.find("ul").slideDown(300);
+                t = null;
+            }, 300);
+        }, function(){
+            if (t){
+                clearTimeout(t);
+                t = null;
+            }
+            else
+                li.find("ul").slideUp(200);
+        });
+    });
+});
+</script>
+
+</body>
+
+</html>

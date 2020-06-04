@@ -1,0 +1,13 @@
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\SGBD Seminar 1\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojAssemblyReference.cache
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\University\SEM 4\DBMS\Laboratories\Laboratory 01\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -1,0 +1,16 @@
+.divclass {
+	height: 80%;
+	width: 100%;
+	background-color: red;
+	background-image: url("image.png");
+}
+
+.divclass:hover {
+	background-image: url("sike.jpg");
+	background-color: white;
+}
+
+.redBackground {
+	color: white;
+	font-size: 150px;
+}
